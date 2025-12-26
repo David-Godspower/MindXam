@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindXam</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+      <div class="loader" id="loader">
+        <h1>Loading...</h1>
+        <p>Please wait while the quiz loads.</p>
+        <div class="spinner"></div>
+      </div>
+    <main class="content" style="display: none;">
+    
+      <div class="start-menu" id="start-menu">
+        <h1>Welcome to MindXam</h1>
+        <p>Test your knowledge here!</p>
+        <button id="start-btn">Start Quiz</button>
+      </div>
+      <div class="quiz-container" id="quiz-container" style="display: none">
+        <form id="quizForm">
+          <div class="container">
+            <!-- Initial display value is just a placeholder -->
+             <span class="top">
+              <h1>MindXam</h1>
+               <div id="timer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>timer-outline</title><path d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z" /></svg>01:00</div>
+             </span>
+           
+          <div id="progressBarContainer">
+              <div id="progressBar"></div>
+          </div>
+          <div class="questionsoptions">
+            <div id="questions"></div>
+            <div id="options">
+              <!-- Options will be dynamically inserted here -->
+               <!-- Example option structure -->
+            </div>
+            <div class="buttons">
+              <button id="previous-btn" type="button">Previous</button>
+              <button id="next-btn" type="button">Next</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div
+        class="results-container"
+        id="results-container"
+        style="display: none"
+      >
+        <h2>Your Score:</h2>
+        <p id="score"></p>
+        <button id="restart-btn">Restart Quiz</button>
+      </div>
+    </main>
+    <footer>
+      <p>David Godspower Ajala (D.G.A.) &copy <span id="year"></span></p>
+      <br />
+      <a
+        href="https://www.linkedin.com/in/david-ajala-a93b862a1/"
+        target="_blank"
+        ><i class="fab fa-linkedin icons" id="linkedin"></i></a
+      >&nbsp;&nbsp;&nbsp;
+      <a href="mailto:ajaladavid11@gmail.com" target="_blank"
+        ><i class="fas fa-envelope icons" id="gmail"></i></a
+      >&nbsp;&nbsp;&nbsp;
+      <a
+        href="https://web.facebook.com/facebook.comDavidGodpowerAjalaDGA/"
+        target="_blank"
+        ><i class="fab fa-facebook icons" id="facebook"></i></a
+      >&nbsp;&nbsp;&nbsp;
+      <a href="https://x.com/ajala28981" target="_blank"
+        ><i class="fab fa-x icons" id="x"></i></a
+      >&nbsp;&nbsp;&nbsp;
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
