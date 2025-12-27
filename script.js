@@ -1,91 +1,147 @@
-let currentQuestionIndex = 0;
-      let score = 0;
-      let userAnswers = [];
-      let questions = []; 
+document.addEventListener("DOMContentLoaded", () => {
+    // We wrap EVERYTHING inside this function so it waits for HTML to load first.
 
-      // DOM ELEMENTS
-      const startBtn = document.getElementById("start-btn");
-      const startScreen = document.getElementById("start-menu");
-      const quizContainer = document.getElementById("quiz-container");
-      const questionsDiv = document.getElementById("questions");
-      const optionsDiv = document.getElementById("options");
-      const nextBtn = document.getElementById("next-btn");
-      const prevBtn = document.getElementById("previous-btn");
-      const resultsContainer = document.getElementById("results-container");
-      const scoreDisplay = document.getElementById("score");
-      const restartBtn = document.getElementById("restart-btn");
-      const timerDisplay = document.getElementById('timer');
-      const progressBar = document.getElementById("progressBar");
-      const categorySelect = document.getElementById("category-select");
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let userAnswers = [];
+    let questions = []; 
 
-      function decodeHTML(html) {
-          const txt = document.createElement('textarea');
-          txt.innerHTML = html;
-          return txt.value;
-      }
+    // DOM ELEMENTS
+    const startBtn = document.getElementById("start-btn");
+    const startScreen = document.getElementById("start-menu");
+    const quizContainer = document.getElementById("quiz-container");
+    const questionsDiv = document.getElementById("questions");
+    const optionsDiv = document.getElementById("options");
+    const nextBtn = document.getElementById("next-btn");
+    const prevBtn = document.getElementById("previous-btn");
+    const resultsContainer = document.getElementById("results-container");
+    const scoreDisplay = document.getElementById("score");
+    const restartBtn = document.getElementById("restart-btn");
+    const timerDisplay = document.getElementById('timer');
+    const progressBar = document.getElementById("progressBar");
+    const categorySelect = document.getElementById("category-select");
 
-      // FETCH QUESTIONS BASED ON SELECTED CATEGORY
-      async function fetchQuestions() {
-          try {
-              // CHANGE BUTTON TEXT
-              startBtn.textContent = "Loading...";
-              startBtn.disabled = true;
-
-              // GET CATEGORY ID FROM DROPDOWN
-              const categoryId = categorySelect.value;
-              
-              // BUILD URL
-              let url = 'https://opentdb.com/api.php?amount=10&type=multiple';
-              if(categoryId !== 'any') {
-                  url += `&category=${categoryId}`;
-              }
-
-              const res = await fetch(url);
-              const data = await res.json();
-
-              questions = data.results.map(loadedQ => {
-                  const formattedQuestion = {
-                      question: decodeHTML(loadedQ.question),
-                      options: [...loadedQ.incorrect_answers.map(decodeHTML)],
-                      answer: decodeHTML(loadedQ.correct_answer)
-                  };
-                  const randomIndex = Math.floor(Math.random() * 4);
-                  formattedQuestion.options.splice(randomIndex, 0, formattedQuestion.answer);
-                  return formattedQuestion;
-              });
-
-              // HIDE START MENU, SHOW QUIZ
-              startBtn.textContent = "Start Quiz";
-              startBtn.disabled = false;
-              startScreen.style.display = "none";
-              quizContainer.style.display = "flex";
-              
-              startTimer();
-              loadQuestion();
-
-          } catch (error) {
-              console.error(error);
-              startBtn.textContent = "Try Again";
-              startBtn.disabled = false;
-              alert("Failed to load questions. Please check your internet.");
-          }
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
+    // LOADER LOGIC
+    const loader = document.getElementById('loader');
+    if(loader) {
         setTimeout(() => {
-            document.getElementById('loader').style.display = 'none';
+            loader.style.display = 'none';
             document.querySelector('.content').style.display = 'block';
-            document.getElementById('year').textContent = new Date().getFullYear();
+            const yearSpan = document.getElementById('year');
+            if(yearSpan) yearSpan.textContent = new Date().getFullYear();
         }, 1500);
-      });
+    }
 
-      // START GAME LISTENER
-      startBtn.addEventListener("click", () => {
-          // Now fetch questions WHEN the user clicks start, so we know which category they picked
-          fetchQuestions();
-      });
+    function decodeHTML(html) {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    }
 
-      function loadQuestion() {
+    // FETCH QUESTIONS
+    async function fetchQuestions() {
+        try {
+            console.log("Fetching questions..."); // Debug log
+            startBtn.textContent = "Loading...";
+            startBtn.disabled = true;
+
+            let url = 'https://opentdb.com/api.php?amount=10&type=multiple';
+            
+            // Check if dropdown exists before reading value
+            if (categorySelect && categorySelect.value !== 'any') {
+                url += `&category=${categorySelect.value}`;
+            }
+
+            const res = await fetch(url);
+            console.log("API Response status:", res.status); // Debug log
+
+            if (!res.ok) {
+                throw new Error(`API Error: ${res.status}`);
+            }
+
+            const data = await res.json();
+            console.log("Data received:", data); // Debug log
+
+            if (data.response_code === 1 || data.results.length === 0) {
+                alert("Sorry, not enough questions in this category! Please pick another one.");
+                startBtn.textContent = "Start Quiz";
+                startBtn.disabled = false;
+                return; 
+            }
+
+            questions = data.results.map(loadedQ => {
+                const formattedQuestion = {
+                    question: decodeHTML(loadedQ.question),
+                    options: [...loadedQ.incorrect_answers.map(decodeHTML)],
+                    answer: decodeHTML(loadedQ.correct_answer)
+                };
+                const randomIndex = Math.floor(Math.random() * 4);
+                formattedQuestion.options.splice(randomIndex, 0, formattedQuestion.answer);
+                return formattedQuestion;
+            });
+
+            startBtn.textContent = "Start Quiz";
+            startBtn.disabled = false;
+            startScreen.style.display = "none";
+            quizContainer.style.display = "flex";
+            
+            startTimer();
+            loadQuestion();
+
+        } catch (error) {
+            console.error("Fetch failed:", error);
+            startBtn.textContent = "Try Again";
+            startBtn.disabled = false;
+            alert(`Error: ${error.message}. Check your internet connection.`);
+        }
+    }
+
+    // EVENT LISTENERS
+    if(startBtn) {
+        startBtn.addEventListener("click", () => {
+            fetchQuestions();
+        });
+    }
+
+    if(nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+    }
+
+    if(prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+    }
+
+    if(restartBtn) {
+        restartBtn.addEventListener("click", () => {
+            resultsContainer.style.display = "none";
+            quizContainer.style.display = "none";
+            startScreen.style.display = "flex";
+
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            score = 0;
+            questions = [];
+            
+            clearInterval(intervalId);
+            intervalId = null;
+            totalSeconds = 60;
+        });
+    }
+
+    // GAME FUNCTIONS
+    function loadQuestion() {
         const currentQuestion = questions[currentQuestionIndex];
         questionsDiv.textContent = `Q${currentQuestionIndex + 1}: ${currentQuestion.question}`;
 
@@ -115,31 +171,15 @@ let currentQuestionIndex = 0;
 
         const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
         progressBar.style.width = `${progressPercent}%`;
-      }
+    }
 
-      function selectOption(option, button) {
+    function selectOption(option, button) {
         userAnswers[currentQuestionIndex] = option;
         Array.from(optionsDiv.children).forEach(btn => btn.style.backgroundColor = "");
         button.style.backgroundColor = "lightgreen";
-      }
+    }
 
-      nextBtn.addEventListener("click", () => {
-        if (currentQuestionIndex < questions.length - 1) {
-            currentQuestionIndex++;
-            loadQuestion();
-        } else {
-            showResults();
-        }
-      });
-
-      prevBtn.addEventListener("click", () => {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--;
-            loadQuestion();
-        }
-      });
-
-      function showResults() {
+    function showResults() {
         clearInterval(intervalId);
         intervalId = null;
 
@@ -177,31 +217,17 @@ let currentQuestionIndex = 0;
         const oldReview = document.getElementById('review-section');
         if(oldReview) oldReview.remove();
         resultsContainer.appendChild(reviewContainer);
-      }
+    }
 
-      restartBtn.addEventListener("click", () => {
-        resultsContainer.style.display = "none";
-        quizContainer.style.display = "none";
-        startScreen.style.display = "flex";
+    let intervalId = null;
+    let totalSeconds = 60; 
 
-        currentQuestionIndex = 0;
-        userAnswers = [];
-        score = 0;
-        questions = [];
-        
-        // Reset timer logic
-        clearInterval(intervalId);
-        intervalId = null;
-        totalSeconds = 60;
-      });
-
-      let intervalId = null;
-      let totalSeconds = 60; 
-
-      function updateTimerDisplay() {
+    function updateTimerDisplay() {
         let minutes = Math.floor(totalSeconds / 60);
         let seconds = totalSeconds % 60;
-        timerDisplay.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z" /></svg>${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        if(timerDisplay) {
+             timerDisplay.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M19.03,7.39L20.45,5.97C20,5.46 19.55,5 19.04,4.56L17.62,6C16.07,4.74 14.12,4 12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22C17,22 21,17.97 21,13C21,10.88 20.26,8.93 19.03,7.39M11,14H13V8H11M15,1H9V3H15V1Z" /></svg>${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
 
         if (totalSeconds <= 0) {
             clearInterval(intervalId);
@@ -209,9 +235,11 @@ let currentQuestionIndex = 0;
         } else {
             totalSeconds--;
         }
-      }
+    }
 
-      function startTimer() {
+    function startTimer() {
         totalSeconds = 60; 
         if (!intervalId) intervalId = setInterval(updateTimerDisplay, 1000);
-      }
+    }
+
+}); // END OF DOMContentLoaded
