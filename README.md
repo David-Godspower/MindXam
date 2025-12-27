@@ -40,8 +40,6 @@ To run this project on your local machine, follow these steps:
 
 ## 📸 Screenshots
 
-*(You can add screenshots of your app here later)*
-
 | Start Screen | Quiz Interface | Results & Review |
 | :---: | :---: | :---: |
 | ![Start](startscreen.png) | ![Quiz](quizinterface.png) | ![Results](result-review.png) |
