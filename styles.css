@@ -1,214 +1,241 @@
-body{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: blue;
-    color: white;
-}
-main{
-    flex: 1;
-}.loader {
-  width: 100%;
-  height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: blue;
-    z-index: 9999;
-    flex-direction: column;
-}
-.spinner {
-    border: 16px solid #f3f3f3; /* Light grey background for the loader track */
-  border-top: 16px solid #3498db; /* Blue spinning part */
-  border-radius: 50%; /* Makes it a circle */
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-top: 30px;
-    animation: spin 2s linear infinite;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.start-menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 85vh;
-    background-color: blue;
-    width: 100%;
-    color: white;
-    font-family: 'Arial', sans-serif;
-}
-.start-menu h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.start-menu p{
-    font-size:2rem;
-    margin-bottom: 50px;
-    text-align: center;
-}
-.start-menu button {
-    background-color: yellow;
-    padding: 5px 10px;
-    width: 200px;
-    height: 100px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 35px;
-    cursor: pointer;
-}
-.start-menu button:hover {
-    width: 300px;
-    font-size:40px;
-    border-radius: 50px;
-    border-color: white;
-}
-/* QUIZ CONTAINER — CLEAN MODERN LOOK */
-#quiz-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+ 
+      /* --- CSS STYLES --- */
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: blue;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
+      .loader {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: blue;
+        z-index: 9999;
+        flex-direction: column;
+      }
+      .spinner {
+        border: 16px solid #f3f3f3;
+        border-top: 16px solid #3498db;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        margin-top: 30px;
+        animation: spin 2s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .start-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 85vh;
+        width: 100%;
+        color: white;
+      }
+      .start-menu h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .start-menu p {
+        font-size: 2rem;
+        margin-bottom: 50px;
+        text-align: center;
+      }
+      .start-menu button {
+        background-color: yellow;
+        padding: 5px 10px;
+        width: 200px;
+        height: 100px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 35px;
+        cursor: pointer;
+        border: none;
+      }
+      .start-menu button:hover {
+        transform: scale(1.05);
+      }
+      
+      /* QUIZ CONTAINER */
+      #quiz-container {
+        position: relative;
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 30px;
+        background-color: #f2f2f2;
+        color: black;
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+      }
+      
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: black;
+        padding: 10px 15px;
+        border-radius: 10px;
+        box-sizing: border-box;
+      }
+      #timer {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        display: flex;
+        align-items: center;
+      }
+      #timer svg {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        fill: white;
+      }
+      #questions {
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #options button {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        background-color: white;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: 0.2s;
+      }
+      #options button:hover {
+        background-color: yellow;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 25px;
+      }
+      #previous-btn, #next-btn {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      #next-btn:hover { background-color: green; }
+      #previous-btn:hover { background-color: red; }
+      
+      /* PROGRESS BAR */
+      #progressBarContainer {
+        width: 100%;
+        height: 10px;
+        background-color: #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+      #progressBar {
+        height: 100%;
+        width: 0%;
+        background-color: #3498db;
+        transition: width 0.3s ease;
+      }
+      
+      /* RESULTS CONTAINER - FIXED SCROLLING */
+      .results-container {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Aligns content to top */
+        width: 50%;
+        max-width: 600px;
+        max-height: 80vh; /* Prevents it from being too tall */
+        margin: 100px auto;
+        padding: 40px;
+        background-color: white;
+        color: black;
+        border-radius: 20px;
+        overflow-y: auto; /* Adds scrollbar if list is long */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+      }
+      .results-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+      #restart-btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      #restart-btn:hover {
+        background-color: green;
+      }
+      
+      /* REVIEW SECTION */
+      #review-section {
+        width: 100%;
+        margin-top: 20px;
+        text-align: left;
+        border-top: 2px solid #eee;
+        padding-top: 20px;
+      }
+      #review-section p {
+        font-size: 1rem;
+        line-height: 1.5;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+      }
 
-    width: 45%;               /* reduced width */
-    margin: 100px auto;       /* centered */
-    padding: 30px;            /* inner space */
+      /* FOOTER */
+      footer {
+        margin-top: 50px;
+        padding-bottom: 20px;
+        text-align: center;
+      }
+      footer a {
+        color: white;
+        font-size: 24px;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      footer a:hover i {
+        transform: scale(1.2);
+      }
     
-    background-color: #f2f2f2; /* light grey for modern UI */
-    color: black;              /* readable text */
-    
-    border-radius: 20px;
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.3); /* Floating effect */
-}
-
-
-.top {
-    display: flex;
-    position: absolute;
-    justify-content: space-between;
-    align-items: center;
-    width: 102%;
-    background-color: black;
-    padding: 5px 10px;
-    border-radius: 20px 20px 0px 0px;
-    top: -50px;
-    left: 0;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    position: relative;
-}
-#timer {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-}
-/* QUESTION TEXT */
-#questions {
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* OPTIONS */
-#options button {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-
-    background-color: white;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-
-    cursor: pointer;
-    font-size: 1rem;
-    transition: 0.2s;
-}
-
-#options button:hover {
-    background-color: yellow;
-}
-
-/* NAVIGATION BUTTONS */
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 25px;
-}
-
-#previous-btn, 
-#next-btn {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-#previous-btn:hover,
-#next-btn:hover {
-    background-color: green;
-    transform: scale(1.1);
-}
-
-
-
-
-
-.results-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 85vh;
-    background-color: white;
-    width: 50%;
-    color: white;
-    font-family: 'Arial', sans-serif;
-}
-
-
-footer{
-    margin-top: 100px;
-    bottom: 0;
-    align-items: center;
-    text-align: center;
-}
-footer p:hover{
-    cursor:pointer;
-}
-footer a{
-    color:white;
-    font-size: 30px;
-    cursor: pointer;
-}
-#linkedin:hover{
-    font-size: 45px;
-    color:lightblue;
-}
-#gmail:hover{
-    color:red;
-    font-size: 45px;
-}
-#facebook:hover{
-    font-size: 45px;
-    color:lightblue;
-}
-#x:hover{
-    font-size: 45px;
-    color:black;
-}
