@@ -3,7 +3,7 @@
 MindXam is an interactive, web-based quiz application that challenges users with random trivia questions. Built with vanilla JavaScript, it connects to the **Open Trivia Database API** to ensure you never run out of new questions.
 
 **[🚀 View Live Demo](https://david-godspower.github.io/MindXam/)**
-*(Replace the link above with your actual GitHub Pages URL)*
+
 
 ## ✨ Features
 
