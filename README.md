@@ -4,23 +4,22 @@ MindXam is an interactive, web-based quiz application that challenges users with
 
 **[🚀 View Live Demo](https://david-godspower.github.io/MindXam/)**
 
-
 ## ✨ Features
 
-* **Dynamic Questions:** Fetches real-time data from the Open Trivia API (no hardcoded questions).
-* **Category Selection:** Choose from topics like Technology, Current Affairs, Sports, History, and more.
-* **Timer System:** A 60-second countdown keeps the pressure on!
-* **Progress Tracking:** Visual progress bar shows how far you are in the quiz.
-* **Review System:** At the end of the quiz, see exactly which questions you got right or wrong with the correct answers highlighted.
-* **Responsive Design:** Works seamlessly on mobile, tablet, and desktop.
-* **Loading States:** Custom spinners and error handling for smooth user experience.
+- **Dynamic Questions:** Fetches real-time data from the Open Trivia API (no hardcoded questions).
+- **Category Selection:** Choose from topics like Technology, Current Affairs, Sports, History, and more.
+- **Timer System:** A 60-second countdown keeps the pressure on!
+- **Progress Tracking:** Visual progress bar shows how far you are in the quiz.
+- **Review System:** At the end of the quiz, see exactly which questions you got right or wrong with the correct answers highlighted.
+- **Responsive Design:** Works seamlessly on mobile, tablet, and desktop.
+- **Loading States:** Custom spinners and error handling for smooth user experience.
 
 ## 🛠️ Technologies Used
 
-* **HTML5:** Structure and semantic markup.
-* **CSS3:** Custom styling, Flexbox layout, and responsive media queries.
-* **JavaScript (ES6+):** Async/Await for API fetching, DOM manipulation, and game logic.
-* **Open Trivia DB API:** The external service used for question data.
+- **HTML5:** Structure and semantic markup.
+- **CSS3:** Custom styling, Flexbox layout, and responsive media queries.
+- **JavaScript (ES6+):** Async/Await for API fetching, DOM manipulation, and game logic.
+- **Open Trivia DB API:** The external service used for question data.
 
 ## 🚀 How to Run Locally
 
@@ -36,12 +35,12 @@ To run this project on your local machine, follow these steps:
     ```
 3.  **Open the file:**
     Simply double-click `index.html` to open it in your browser.
-    *Note: For the best experience, use "Live Server" in VS Code to avoid any local CORS issues, though the current API setup supports direct file opening.*
+    _Note: For the best experience, use "Live Server" in VS Code to avoid any local CORS issues, though the current API setup supports direct file opening._
 
 ## 📸 Screenshots
 
-| Start Screen | Quiz Interface | Results & Review |
-| :---: | :---: | :---: |
+|        Start Screen         |        Quiz Interface        |        Results & Review         |
+| :-------------------------: | :--------------------------: | :-----------------------------: |
 | ![Start](./startscreen.png) | ![Quiz](./quizinterface.png) | ![Results](./result-review.png) |
 
 ## 🧩 How It Works
@@ -56,10 +55,10 @@ To run this project on your local machine, follow these steps:
 
 **David Godspower Ajala**
 
-* Portfolio: [david-godspower.github.io](https://david-godspower.github.io/david-portfolio/)
-* LinkedIn: [David Ajala](https://www.linkedin.com/in/david-ajala-a93b862a1/)
-* Twitter/X: [David Ajala](https://x.com/ajala28981)
-* Email: ajaladavid11@gmail.com
+- Portfolio: [david-godspower.github.io](https://david-godspower.github.io/david-portfolio/)
+- LinkedIn: [David Ajala](https://www.linkedin.com/in/david-godspower-ajala/)
+- Twitter/X: [David Ajala](https://x.com/ajala28981)
+- Email: ajaladavid11@gmail.com
 
 ## 📄 License
 
