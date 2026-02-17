@@ -320,3 +320,281 @@ footer a:hover i,
 footer p:hover {
   transform: scale(1.2);
 }
+
+/* RESPONSIVE DESIGN */
+
+/* Tablets and smaller screens (768px and below) */
+@media (max-width: 768px) {
+  .start-menu h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  .start-menu p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .instructions {
+    max-width: 90%;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .instructions h3 {
+    font-size: 1.1rem;
+  }
+  .instructions ul {
+    font-size: 0.9rem;
+    padding-left: 25px;
+  }
+
+  select {
+    width: 90%;
+    max-width: 350px;
+    font-size: 1rem;
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+
+  .start-menu button {
+    width: 150px;
+    height: 60px;
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  #quiz-container,
+  .results-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+
+  .top {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  .top h1 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  #category-display {
+    font-size: 1rem;
+  }
+  #timer {
+    font-size: 1.2rem;
+  }
+  #timer svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  #questions {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  #options button {
+    padding: 10px;
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+
+  .buttons {
+    gap: 10px;
+    margin-top: 15px;
+  }
+  #previous-btn,
+  #next-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    flex: 1;
+  }
+
+  .quiz-instructions {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+  .quiz-instructions p {
+    font-size: 0.85rem;
+  }
+
+  #review-section p {
+    font-size: 0.9rem;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  footer {
+    margin-top: 30px;
+    padding-bottom: 15px;
+  }
+  footer a {
+    font-size: 20px;
+    margin: 0 8px;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media (max-width: 480px) {
+  .loader h1 {
+    font-size: 2rem;
+  }
+  .loader h2 {
+    font-size: 1.3rem;
+  }
+  .loader p {
+    font-size: 1rem;
+  }
+
+  .start-menu {
+    height: 90vh;
+    padding: 10px;
+  }
+  .start-menu h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .start-menu p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .instructions {
+    max-width: 95%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid white;
+  }
+  .instructions h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .instructions ul {
+    font-size: 0.8rem;
+    padding-left: 20px;
+    margin: 5px 0;
+  }
+  .instructions li {
+    margin-bottom: 5px;
+  }
+
+  select {
+    width: 95%;
+    font-size: 0.9rem;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .start-menu button {
+    width: 120px;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  #quiz-container,
+  .results-container {
+    width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .top {
+    padding: 8px;
+    gap: 8px;
+  }
+  .top h1 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  #category-display {
+    font-size: 0.9rem;
+  }
+  #timer {
+    font-size: 1rem;
+  }
+  #timer svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+  }
+
+  #progressBarContainer {
+    height: 8px;
+    margin-bottom: 15px;
+  }
+
+  #questions {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  #options button {
+    padding: 8px;
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+
+  .buttons {
+    gap: 8px;
+    margin-top: 12px;
+  }
+  #previous-btn,
+  #next-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+
+  .quiz-instructions {
+    padding: 8px 10px;
+    margin-bottom: 12px;
+  }
+  .quiz-instructions p {
+    font-size: 0.8rem;
+  }
+
+  .results-container {
+    max-height: 90vh;
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  #score {
+    font-size: 2rem !important;
+    margin: 8px 0 !important;
+  }
+
+  #restart-btn {
+    margin-top: 15px;
+    padding: 8px 15px;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  #review-section {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  #review-section p {
+    font-size: 0.85rem;
+    padding: 10px;
+    margin-bottom: 6px;
+  }
+
+  footer {
+    margin-top: 20px;
+    padding: 10px 10px 15px;
+  }
+  footer a {
+    font-size: 18px;
+    margin: 0 6px;
+  }
+  footer p {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+}
