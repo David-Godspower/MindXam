@@ -27,7 +27,7 @@ To run this project on your local machine, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/David-Godspower/MindXam.git](https://github.com/David-Godspower/MindXam.git)
+    git clone https://github.com/David-Godspower/MindXam.git
     ```
 2.  **Navigate to the project folder:**
     ```bash
