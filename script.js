@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         showResults();
       }
-    }, 500);
+    }, 700);
   }
 
   function showResults() {
