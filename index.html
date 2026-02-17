@@ -24,6 +24,19 @@
         <p>Test your Knowledge</p>
         <p>Select a category to begin:</p>
 
+        <div class="instructions">
+          <h3>Instructions:</h3>
+          <ul>
+            <li>Answer 15 multiple-choice questions</li>
+            <li>
+              Click on an answer to automatically move to the next question
+            </li>
+            <li>You have 2 minutes to complete the quiz</li>
+            <li>Use the Previous button to go back if needed</li>
+            <li>Your score will be graded A-F based on performance</li>
+          </ul>
+        </div>
+
         <select id="category-select">
           <option value="any">Any Category</option>
           <option value="27">Animals</option>
@@ -34,8 +47,8 @@
           <option value="11">Entertainment: Films</option>
           <option value="9">General Knowledge</option>
           <option value="23">History</option>
-           <option value="19">Mathematics</option>
-           <option value="21">Sports</option>
+          <option value="19">Mathematics</option>
+          <option value="21">Sports</option>
           <option value="18">Technology (Computers)</option>
           <option value="28">Vehicles</option>
         </select>
@@ -58,6 +71,14 @@
             </div>
           </span>
           <div id="progressBarContainer"><div id="progressBar"></div></div>
+
+          <div class="quiz-instructions">
+            <p>
+              <strong
+                >Click on your answer to proceed to the next question</strong
+              >
+            </p>
+          </div>
 
           <div class="questionsoptions">
             <div id="questions"></div>
