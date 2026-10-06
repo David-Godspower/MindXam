@@ -1,89 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MindXam</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="loader" class="loader">
-    <div class="spinner"></div>
-</div>
-<main class="content">
-    <div class="glass-container">
+      <div class="spinner"></div>
+    </div>
+    <main class="content">
+      <div class="glass-container">
         <section id="start-menu">
-            <div class="hero">
-                <h1>MindXam</h1>
-                <p class="subtitle">Challenge your intellect with precision trivia.</p>
+          <div class="hero">
+            <h1>MindXam</h1>
+            <p class="subtitle">
+              Challenge your intellect with precision trivia.
+            </p>
+          </div>
+          <div class="setup-box">
+            <div class="input-group">
+              <label for="category-select">Select Domain</label>
+              <select id="category-select" class="premium-select">
+                <option value="any">Any Category</option>
+                <option value="9">General Knowledge</option>
+                <option value="18">Technology (Computers)</option>
+                <option value="19">Mathematics</option>
+                <option value="21">Sports</option>
+                <option value="23">History</option>
+                <option value="27">Animals</option>
+                <option value="10">Books & Literature</option>
+                <option value="26">Celebrities</option>
+                <option value="24">Current Affairs (Politics)</option>
+                <option value="11">Entertainment: Films</option>
+                <option value="28">Vehicles</option>
+              </select>
             </div>
-            <div class="setup-box">
-                <div class="input-group">
-                    <label for="category-select">Select Domain</label>
-                    <select id="category-select" class="premium-select">
-                        <option value="any">Any Category</option>
-                        <option value="9">General Knowledge</option>
-                        <option value="18">Technology (Computers)</option>
-                        <option value="19">Mathematics</option>
-                        <option value="21">Sports</option>
-                        <option value="23">History</option>
-                        <option value="27">Animals</option>
-                        <option value="10">Books & Literature</option>
-                        <option value="26">Celebrities</option>
-                        <option value="24">Current Affairs (Politics)</option>
-                        <option value="11">Entertainment: Films</option>
-                        <option value="28">Vehicles</option>
-                    </select>
-                </div>
-                <button id="start-btn" class="btn-primary">Initialize Quiz</button>
-            </div>
+            <button id="start-btn" class="btn-primary">Initialize Quiz</button>
+          </div>
         </section>
-        <section id="quiz-container" style="display: none;">
-            <div class="quiz-header">
-                <div class="badge" id="category-display">MindXam</div>
-                <div id="timer" class="timer-pill">
-                    <i class="fa-regular fa-clock"></i>
-                    <span id="time-left">02:00</span>
-                </div>
+        <section id="quiz-container" style="display: none">
+          <div class="quiz-header">
+            <div class="badge" id="category-display">MindXam</div>
+            <div id="timer" class="timer-pill">
+              <i class="fa-regular fa-clock"></i>
+              <span id="time-left">02:00</span>
             </div>
-            <div class="progress-wrapper">
-                <div id="progressBar"></div>
-            </div>
-            <div class="question-box">
-                <h2 id="questions">Preparing...</h2>
-                <div id="options" class="options-grid"></div>
-            </div>
-            <div class="quiz-footer">
-                <button id="previous-btn" class="btn-secondary">Previous</button>
-                <button id="next-btn" class="btn-secondary">Skip</button>
-            </div>
+          </div>
+          <div class="progress-wrapper">
+            <div id="progressBar"></div>
+          </div>
+          <div class="question-box">
+            <h2 id="questions">Preparing...</h2>
+            <div id="options" class="options-grid"></div>
+          </div>
+          <div class="quiz-footer">
+            <button id="previous-btn" class="btn-secondary">Previous</button>
+            <button id="next-btn" class="btn-secondary">Skip</button>
+          </div>
         </section>
 
-        <section id="results-container" style="display: none;">
-            <h2>Performance Report</h2>
-            <div id="score-circle">
-                <span id="score-percent">0%</span>
-            </div>
-            <div id="grade-badge">Grade: F</div>
-            <div id="review-section"></div>
-            <button id="restart-btn" class="btn-primary">New Attempt</button>
+        <section id="results-container" style="display: none">
+          <h2>Performance Report</h2>
+          <div id="score-circle">
+            <span id="score-percent">0%</span>
+          </div>
+          <div id="grade-badge">Grade: F</div>
+          <div id="review-section"></div>
+          <button id="restart-btn" class="btn-primary">New Attempt</button>
         </section>
-    </div>
-</main>
+      </div>
+    </main>
 
-<footer class="site-footer">
-    <p>Developed by <strong><a href="https://davidgodspowerajala.me" target="_blank">David Godspower Ajala</a></strong> &copy; <span id="current-year"></span></p>
-    <div class="social-links">
-        <a href="https://web.facebook.com/facebook.comDavidGodpowerAjalaDGA/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/david-godspower-ajala/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:ajaladavid11@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://x.com/ajala28981" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x"></i></a>
-    </div>
-</footer>
+    <footer class="site-footer">
+      <p>
+        Developed by
+        <strong
+          ><a href="https://davidgodspowerajala.me" target="_blank"
+            >David Godspower Ajala</a
+          ></strong
+        >
+        &copy; <span id="current-year"></span>
+      </p>
+      <div class="social-links">
+        <a
+          href="https://facebook.com/DavidGodspowerAjalaDGA/"
+          target="_blank"
+          aria-label="Facebook"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/david-godspower-ajala/"
+          target="_blank"
+          aria-label="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="mailto:ajaladavid11@gmail.com" aria-label="Email"
+          ><i class="fas fa-envelope"></i
+        ></a>
+        <a
+          href="https://x.com/DavidGAjala"
+          target="_blank"
+          aria-label="X (Twitter)"
+          ><i class="fab fa-x"></i
+        ></a>
+      </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
